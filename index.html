@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<title>{{ ip }}</title>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+}
+table {
+  width: 100%;
+}
+.header {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+dt {
+  font-weight: bold;
+}
+
+</style>
+<body>
+<h2>Your IP address: {{ip}}</h2>
+<dl>
+  <dt>HTTP Method</dt>
+  <dd>{{method}}</dd>
+</dl>
+<dl>
+  <dt>HTTP Version</dt>
+  <dd>{{version}}</dd>
+</dl>
+<h2>Headers</h2>
+<table>
+  {% for h, v in pairs(headers) do %}
+  <tr>
+    <td class="header">
+      {{ h }}
+    </td>
+    <td>
+      <pre>{{ v }}</pre>
+    </td>
+  </tr>
+  {% end %}
+</table>
+
+<h2>HTTP GET Arguments</h2>
+<table>
+  {% for h, v in pairs(args) do %}
+  <tr>
+    <td class="header">
+      {{ h }}
+    </td>
+    <td>
+      <pre>{{ v }}</pre>
+    </td>
+  </tr>
+  {% end %}
+</table>
+
+<h2>HTTP POST Arguments</h2>
+<table>
+  {% for h, v in pairs(post_args) do %}
+  <tr>
+    <td class="header">
+      {{ h }}
+    </td>
+    <td>
+      {% if type(v) == "table" then %}
+      <pre>{{ table.concat(v, ', ') }}</pre>
+      {% else %}
+      <pre>{{ v }}</pre>
+      {% end %}
+    </td>
+  </tr>
+  {% end %}
+</table>
+
+</body>
+</html>
