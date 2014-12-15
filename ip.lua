@@ -8,5 +8,8 @@ return template.render("index.html", {
   headers = ngx.req.get_headers(),
   version = ngx.req.http_version(),
   args = ngx.req.get_uri_args(),
-  post_args = ngx.req.get_post_args()
+  post_args = ngx.req.get_post_args(),
+  port = ngx.var.remote_port,
+  uri = ngx.var.request_uri,
+  scheme = ngx.var.scheme
 })

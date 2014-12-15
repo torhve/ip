@@ -7,12 +7,25 @@ body {
 }
 table {
   width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 .header {
   text-transform: capitalize;
   font-weight: bold;
+  background-color: #caf2f8;
+}
+td, th {
+  border-left: 1px solid #69d2e7;
+  border-bottom: 1px solid #69d2e7;
+}
+th, dt {
+  background-color: #69d2e7;
+  color: white;
+  font-weight: bold;
 }
 dt {
+  width: 200px;
   font-weight: bold;
 }
 
@@ -27,8 +40,26 @@ dt {
   <dt>HTTP Version</dt>
   <dd>{{version}}</dd>
 </dl>
+<dl>
+  <dt>Request URI</dt>
+  <dd>{{uri}}</dd>
+</dl>
+<dl>
+  <dt>Scheme</dt>
+  <dd>{{scheme}}</dd>
+</dl>
+<dl>
+  <dt>Your port</dt>
+  <dd>{{port}}</dd>
+</dl>
 <h2>Headers</h2>
 <table>
+  <th>
+    Header
+  </th>
+  <th>
+    Value
+  </th>
   {% for h, v in pairs(headers) do %}
   <tr>
     <td class="header">
