@@ -28,10 +28,9 @@ dt {
   width: 200px;
   font-weight: bold;
 }
-
 </style>
 <body>
-<h2>Your IP address: {{ip}}</h2>
+<h2>{{ip}} <small> is your IP address</small></h2>
 <dl>
   <dt>HTTP Method</dt>
   <dd>{{method}}</dd>
@@ -104,5 +103,9 @@ dt {
   {% end %}
 </table>
 
+
+<small>
+  Source of this page: <a href="http://github.com/torhve/ip">github.com/torhve/ip</a>
+</small>
 </body>
 </html>
