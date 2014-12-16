@@ -1,4 +1,5 @@
 template = require "resty.template"
+json = require "cjson"
 -- Clear cache for debugging
 template.cache = {}
 
@@ -8,8 +9,8 @@ ngx.header.content_type = 'text/html'
 -- Read body
 ngx.req.read_body!
 
--- Render our  index.html with the table of relevant info
-template.render "index.html",
+-- Populate vars
+vars =
   ip: ngx.var.remote_addr
   method: ngx.req.get_method!
   headers: ngx.req.get_headers!
@@ -19,4 +20,13 @@ template.render "index.html",
   port: ngx.var.remote_port
   uri: ngx.var.request_uri
   scheme: ngx.var.scheme
+
+-- Check if the user agent wants HTML or JSON
+
+if vars.headers.accept and vars.headers.accept\match 'application/json'
+  ngx.header.content_type = 'application/json'
+  ngx.print json.encode vars
+else
+  -- Render our  index.html with the table of relevant info
+  template.render "index.html", vars
 
