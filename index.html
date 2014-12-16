@@ -4,6 +4,20 @@
 <style type="text/css">
 body {
   font-family: sans-serif;
+  background: #222426;
+  color: rgba(255,255,255,0.8);
+}
+a {
+  color: #4d8fc8;
+}
+h1 {
+  font-size: 48px;
+}
+h1, h2, h3 {
+  color: #4d8fc8;
+}
+h2 > small {
+  color: white;
 }
 table {
   width: 100%;
@@ -13,14 +27,14 @@ table {
 .header {
   text-transform: capitalize;
   font-weight: bold;
-  background-color: #caf2f8;
+  background-color: #222;
 }
 td, th {
-  border-left: 1px solid #69d2e7;
-  border-bottom: 1px solid #69d2e7;
+  border-left: 1px solid #111;
+  border-bottom: 1px solid #111;
 }
 th, dt {
-  background-color: #69d2e7;
+  background-color: #111;
   color: white;
   font-weight: bold;
 }
@@ -30,7 +44,8 @@ dt {
 }
 </style>
 <body>
-<h2>{{ip}} <small> is your IP address</small></h2>
+<p>Your IP address is</p>
+<h1>{{ip}}</h1>
 <dl>
   <dt>HTTP Method</dt>
   <dd>{{method}}</dd>
