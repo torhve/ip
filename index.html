@@ -94,7 +94,11 @@ dt {
       {{ h }}
     </td>
     <td>
+      {% if type(v) == "table" then %}
+      <pre>{{ table.concat(v, ', ') }}</pre>
+      {% else %}
       <pre>{{ v }}</pre>
+      {% end %}
     </td>
   </tr>
   {% end %}
