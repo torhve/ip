@@ -1,4 +1,5 @@
 local template = require("resty.template")
+local resolver = require("resty.dns.resolver")
 local json = require("cjson")
 template.cache = { }
 ngx.header.content_type = 'text/html'
@@ -17,6 +18,10 @@ local vars = {
 if vars.headers.accept and vars.headers.accept:match('application/json') then
   ngx.header.content_type = 'application/json'
   return ngx.print(json.encode(vars))
+elseif vars.headers.user_agent and vars.headers.user_agent:lower():match('wget') then
+  return ngx.say(vars.ip)
+elseif vars.headers.user_agent and vars.headers.user_agent:lower():match('curl') then
+  return ngx.say(vars.ip)
 else
   return template.render("index.html", vars)
 end
