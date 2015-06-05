@@ -37,6 +37,7 @@ table {
 td, th {
   border-left: 1px solid #111;
   border-bottom: 1px solid #111;
+  padding-left: 5px;
 }
 th, dt {
   background-color: #111;
@@ -87,7 +88,7 @@ Your IPv6 address is <iframe seamless src="//ipv6.xt.gg/ip"></iframe>
   <dt>Your port</dt>
   <dd>{{port}}</dd>
 </dl>
-<h2>Headers</h2>
+<h2>You sent these HTTP Headers:</h2>
 <table>
   <th>
     Header
@@ -106,7 +107,7 @@ Your IPv6 address is <iframe seamless src="//ipv6.xt.gg/ip"></iframe>
   </tr>
   {% end %}
 </table>
-<h2>GEOIP</h2>
+<h2>GEOIP information for your IP:</h2>
 <table>
   <th>
     Key
@@ -165,6 +166,11 @@ Your IPv6 address is <iframe seamless src="//ipv6.xt.gg/ip"></iframe>
 <p>
 <small>
   Request page with header <code>Accept</code> set to <code>application/json</code> to get a JSON response
+</small>
+</p>
+<p>
+<small>
+  Request page with User-Agent set to <code>wget</code> or <code>curl</code> to get just the IP.
 </small>
 </p>
 <small>
