@@ -13,7 +13,7 @@ a {
 h1 {
   font-size: 48px;
 }
-h1, h2, h3 {
+h1, h2, h3, iframe {
   color: #4d8fc8;
 }
 h2 > small {
@@ -42,10 +42,25 @@ dt {
   width: 200px;
   font-weight: bold;
 }
+iframe[seamless]{
+  display: inline-block;
+  background-color: transparent;
+  border: 0px none transparent;
+  padding: 0px;
+  overflow: hidden;
+  height: 48px;
+  width: 800px;
+}
 </style>
 <body>
 <p>Your IP address is</p>
 <h1>{{ip}}</h1>
+<h4>
+Your IPv4 address is <iframe seamless src="//ipv4.xt.gg/ip"></iframe>
+</h4>
+<h4>
+Your IPv6 address is <iframe seamless src="//ipv6.xt.gg/ip"></iframe>
+</h4>
 <dl>
   <dt>HTTP Method</dt>
   <dd>{{method}}</dd>

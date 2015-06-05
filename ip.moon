@@ -30,6 +30,8 @@ elseif vars.headers.user_agent and vars.headers.user_agent\lower!\match 'wget' -
   ngx.say vars.ip
 elseif vars.headers.user_agent and vars.headers.user_agent\lower!\match 'curl' -- Return just the IP to CLI
   ngx.say vars.ip
+elseif vars.uri\match 'ip' -- Return just the IP for this URL
+  ngx.print "<h2 style=\"color: #4d8fc8; padding: 0; margin: 0; font-size:18px\">#{vars.ip}</h2>"
 else
   -- Render our  index.html with the table of relevant info
   template.render "index.html", vars
