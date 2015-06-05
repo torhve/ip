@@ -3,9 +3,14 @@
 <title>{{ ip }}</title>
 <style type="text/css">
 body {
-  font-family: sans-serif;
+  font-family: "Droid Sans", sans-serif;
   background: #222426;
   color: rgba(255,255,255,0.8);
+  padding-left: 10%;
+  padding-right: 10%;
+}
+pre {
+  font-family: "Droid Sans Mono", monospace;
 }
 a {
   color: #4d8fc8;
@@ -43,7 +48,8 @@ dt {
   font-weight: bold;
 }
 iframe[seamless]{
-  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
   background-color: transparent;
   border: 0px none transparent;
   padding: 0px;
