@@ -21,6 +21,9 @@ h1 {
 h1, h2, h3, iframe {
   color: #4d8fc8;
 }
+iframe {
+    background: transparent;
+}
 h2 > small {
   color: white;
 }
@@ -34,10 +37,16 @@ table {
   font-weight: bold;
   background-color: #222;
 }
+.clearfix {
+    overflow: auto;
+}
+pre {
+    margin: 0;
+}
 td, th {
   border-left: 1px solid #111;
   border-bottom: 1px solid #111;
-  padding-left: 5px;
+  padding: 10px;
 }
 th, dt {
   background-color: #111;
@@ -47,6 +56,13 @@ th, dt {
 dt {
   width: 200px;
   font-weight: bold;
+}
+dt, dd {
+    padding: 4px;
+}
+dl {
+    margin: 5px;
+    float: left;
 }
 iframe[seamless]{
   display: table-cell;
@@ -68,6 +84,7 @@ Your IPv4 address is <iframe seamless src="//ipv4.xt.gg/ip"></iframe>
 <h4>
 Your IPv6 address is <iframe seamless src="//ipv6.xt.gg/ip"></iframe>
 </h4>
+<div class="clearfix">
 <dl>
   <dt>HTTP Method</dt>
   <dd>{{method}}</dd>
@@ -89,6 +106,7 @@ Your IPv6 address is <iframe seamless src="//ipv6.xt.gg/ip"></iframe>
   <dd>{{port}}</dd>
 </dl>
 <h2>You sent these HTTP Headers:</h2>
+</div>
 <table>
   <th>
     Header
