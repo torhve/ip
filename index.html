@@ -106,6 +106,25 @@ Your IPv6 address is <iframe seamless src="//ipv6.xt.gg/ip"></iframe>
   </tr>
   {% end %}
 </table>
+<h2>GEOIP</h2>
+<table>
+  <th>
+    Key
+  </th>
+  <th>
+    Value
+  </th>
+  {% for k, v in pairs(geo_vars) do %}
+  <tr>
+    <td class="header">
+      {{ k }}
+    </td>
+    <td>
+      <pre>{{ v }}</pre>
+    </td>
+  </tr>
+  {% end %}
+</table>
 
 <h2>HTTP GET Arguments</h2>
 <table>
