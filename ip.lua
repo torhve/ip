@@ -40,7 +40,7 @@ elseif vars.headers.user_agent and vars.headers.user_agent:lower():match('wget')
   return ngx.say(vars.ip)
 elseif vars.headers.user_agent and vars.headers.user_agent:lower():match('curl') then
   return ngx.say(vars.ip)
-elseif vars.uri:match('ip') then
+elseif vars.uri:match('/ip') then
   return ngx.print("<h2 style=\"color: #4d8fc8; padding: 0; margin: 0; font-size:18px\">" .. tostring(vars.ip) .. "</h2>")
 else
   return template.render("index.html", vars)
