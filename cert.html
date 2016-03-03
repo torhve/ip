@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<title>{{ ip }}</title>
+<style type="text/css">
+body {
+  font-family: "Droid Sans", sans-serif;
+  background: #222426;
+  color: rgba(255,255,255,0.8);
+  padding-left: 10%;
+  padding-right: 10%;
+}
+h1 {
+  font-size: 48px;
+}
+h1, h2, h3, iframe, a {
+  color: #4d8fc8;
+}
+iframe {
+    background: transparent;
+}
+h2 > small {
+  color: white;
+}
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.header {
+  text-transform: capitalize;
+  font-weight: bold;
+  background-color: #222;
+}
+.clearfix {
+    overflow: auto;
+}
+pre {
+    margin: 0;
+    font-family: "Droid Sans Mono", monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+td, th {
+  border-left: 1px solid #111;
+  border-bottom: 1px solid #111;
+  padding: 10px;
+}
+th, dt {
+  background-color: #111;
+  color: white;
+  font-weight: bold;
+}
+dt {
+  font-weight: bold;
+}
+dt, dd {
+    padding: 4px;
+}
+dl {
+    margin: 5px;
+}
+iframe[seamless]{
+  display: table-cell;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0px none transparent;
+  padding: 0px;
+  overflow: hidden;
+  height: 48px;
+  width: 800px;
+}
+</style>
+<body>
+  <h1>Hostname:portnumber</h1>
+  <form method="GET">
+    <input type="text" id="target" name="target" value="{{self.target}}">
+    <input type="submit">
+  </form>
+  {% if self.host and self.port then %}
+  {% if lasterr then %}
+  <dl>
+    <dt>Error</dt>
+    <dd>{{ lasterr}}</dt>
+  </dl>
+  {% end %}
+  <h2>Results</h2>
+  {% if self.dns then %}
+  <dl>
+    <dt>DNS</dt>
+    <dd>{% for k,v in ipairs(self.answers) do %} IP{{ k }}: {{ v.address}}{% end %}</dt>
+  </dl>
+  {% end %}
+  {% conn, err = self:connect() %}
+  <dl>
+    <dt>Connect</dt>
+  {% if not err then %}
+    <dd>Successfully connected to host {{ self.dns.address or self.host }} on port {{ self.port }} !</dt>
+  {% else %}
+    <dd>{{ err }} </dt>
+  {% end %}
+  </dl>
+  {% if not err then %}
+  {% session, err = self:sslhandshake(true, self.host) %}
+  <dl>
+    <dt>SSL/TLS Handshake</dt>
+  {% if not err then %}
+  <dd>Handshake successful ! </dt>
+  {% else %}
+  <dd>TLS Hanshake error: {{ session }} {{ err }} </dt>
+  {% end %}
+  </dl>
+  {% end %}
+  {% end %}
+
+<br>
+  <hr>
+<small>
+  Source of this page: <a href="http://github.com/torhve/ip">github.com/torhve/ip</a>
+</small>
+</body>
+</html>
