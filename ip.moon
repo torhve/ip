@@ -53,6 +53,8 @@ elseif vars.uri\match '/ip' -- Return just the IP for this URL
   -- https://http2.github.io/http2-spec/#reuse
   if ngx.var.host\match'ipv4' and vars.ip\match':'
     ngx.exit(421)
+  if ngx.var.host\match'ipv6' and vars.ip\match'.'
+    ngx.exit(421)
   ngx.print "<h2 style=\"color: #4d8fc8; padding: 0; margin: 0; font-size:18px\">#{vars.ip}</h2>"
 else
   -- Render our  index.html with the table of relevant info
